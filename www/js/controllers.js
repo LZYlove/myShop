@@ -1,28 +1,41 @@
-angular.module('starter.controllers', [])
+angular.module('myShop.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('AppCtrl', function($scope, $rootScope, $ionicLoading, $ionicModal, $timeout) {
+  /*console.log("AppCtrl");
+  // Form data for the login modal
+  $scope.loginData = {};
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  // error handler
+  var errorMsg = {
+    0: '网络出错啦，请再试一下',
+    'wrong accessToken': '授权失败'
   };
-})
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+  $rootScope.requestErrorHandler = function(options, callback) {
+    return function(response) {
+      var error;
+      if (response.data && response.data.error_msg) {
+        error = errorMsg[response.data.error_msg];
+      } else {
+        error = errorMsg[response.status] || 'Error: ' + response.status + ' ' + response.statusText;
+      }
+      var o = options || {};
+      angular.extend(o, {
+        template: error,
+        duration: 1000
+      });
+      $ionicLoading.show(o);
+      return callback && callback();
+    };
+  };*/
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+
 });
+
+
+
+
+
+
+
+

@@ -1,11 +1,11 @@
-// Ionic Starter App
+// Ionic myShop App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'myShop' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+// 'myShop.services' is found in services.js
+// 'myShop.controllers' is found in controllers.js
+angular.module('myShop', ['ionic', 'myShop.controllers', 'myShop.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -35,51 +35,53 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'views/tabs.html'
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.home', {
+    url: '/home',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-home': {
+        templateUrl: 'views/home/home.html',
+        controller: 'HomeCtrl'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.pricetags', {
+      url: '/pricetags',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-pricetags': {
+          templateUrl: 'views/pricetags/pricetags.html',
+          controller: 'PricetagsCtrl'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
-        }
-      }
-    })
+    
 
-  .state('tab.account', {
-    url: '/account',
+  .state('tab.cart', {
+    url: '/cart',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-cart': {
+        templateUrl: 'views/cart/cart.html',
+        controller: 'CartCtrl'
       }
     }
-  });
+  })
+
+  .state('tab.person', {
+      url: '/person',
+    views: {
+      'tab-person': {
+        templateUrl: 'views/person/person.html',
+        controller: 'PersonCtrl'
+      }
+    }
+    });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
 
 });
